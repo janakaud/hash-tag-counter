@@ -18,7 +18,7 @@
         "id": "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
         "parent": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
         "name": "lambda.js",
-        "type": "LAMBDA_FILE",
+        "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
@@ -33,13 +33,19 @@
             }
           }
         ],
-        "version": 1
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        }
       },
       "c0f71961-d190-499a-ad22-5cd3245044ce": {
         "id": "c0f71961-d190-499a-ad22-5cd3245044ce",
         "parent": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
         "name": "push-test-data.js",
-        "type": "LAMBDA_FILE",
+        "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
@@ -51,9 +57,16 @@
             "config": {}
           }
         ],
-        "version": 1
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        }
       }
     },
+    "deletedFiles": [],
     "rootNode": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
     "openFiles": [
       "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
@@ -129,39 +142,48 @@
         "globallyEditable": true
       }
     },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "editable": false,
+        "shouldPersist": false,
+        "displayOnly": false
+      }
+    ],
     "packageJSON": {
       "dependencies": {
         "aws-sdk": {
           "name": "aws-sdk",
           "version": "2.176.0",
-          "notRemovable": true
-        },
-        "slappforge-sdk": {
-          "name": "@slappforge/slappforge-sdk",
-          "version": "0.0.3",
           "notRemovable": true,
-          "types": "\n                    declare class RDSQueryParams {\n    instanceIdentifier: string;\n    query: string;\n    inserts: Array<any>\n}\n\ndeclare namespace SL.AWS {\n    class RDS {\n        query(params: RDSQueryParams, callback: Function, connection: any): void;\n\n        beginTransaction(params: any, callback: Function): void;\n    }\n\n    class SQS {\n        receiveAndDeleteMessages(params: any, filteringCallBack: Function, deleteCallBack: Function, errorCallBack: Function): void;\n    }\n}\n"
+          "language": "javascript",
+          "dev": true
         }
       }
     },
     "lambdaId": "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
-    "additionalFiles": [],
-    "envVariables": [
-      {
-        "lambdaId": "all",
-        "varKey": "SIGMA_AWS_ACC_ID",
-        "varValue": "",
-        "editable": false
-      }
-    ]
+    "additionalFiles": []
   },
   "PROJECT_META": {
     "projectName": "hash-tag-counter",
     "projectDescription": "Counting hash tags of social media posts",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
-    "repoName": "hash-tag-counter",
-    "repoUrl": "https://github.com/slappforge/hash-tag-counter",
-    "lastSave": 1522213394972
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1554191574496
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "hash-tag-counter",
+      "url": "https://github.com/janakaud/hash-tag-counter"
+    }
   }
 }
